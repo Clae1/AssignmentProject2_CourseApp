@@ -176,26 +176,46 @@ public class UserDatabase
         return userPaper;
     }
     
+    
     public void RemovePaper(String paper, String username) throws SQLException
     {
         Data data = new Data(); // Initialize an instance of Data
-        String[] tablePaper = new String[6];
-        Statement statement = conn.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT studentid, paper FROM StudentTable "
-                + "WHERE studentid = '" + username + "'");
-        
-        if (rs.next())
+        String updatedPapers = "";
+        try
         {
-            tablePaper = rs.getString("paper").split(",");
-            for (int i = 0; i < tablePaper.length; ++i) 
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT studentid, paper FROM StudentTable "
+                    + "WHERE studentid = '" + username + "'");
+            
+            if (rs.next())
             {
-                if (paper.equalsIgnoreCase(tablePaper[i])) 
+                String[] currentPapers = rs.getString("paper").split(",");
+                for (int i = 0; i < currentPapers.length-1; ++i)
                 {
-                    System.out.println("Paper has been removed");
-                    tablePaper[i] = "";
-                }     
+                    if (paper.equalsIgnoreCase(currentPapers[i])) 
+                    {
+                        System.out.println("Paper has been removed");
+                        currentPapers[i] = "";
+                    } 
+                }
+                for (int i = 0; i < currentPapers.length; ++i)
+                {
+                   updatedPapers += currentPapers[i];
+                }
+                
+                // Use Statement to execute the update query
+                String updateQuery = "UPDATE StudentTable SET paper = '" + updatedPapers + "' WHERE studentid = '" + username + "'";
+                statement.executeUpdate(updateQuery);
+                //end of code
             }
+            rs.close();
+            statement.close(); 
         }
+        catch (SQLException ex)
+        {
+            System.out.println("SQL Exception: " + ex.getMessage());
+        }
+       
     }
     
     
