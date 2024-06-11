@@ -35,7 +35,7 @@ public class MainMenuPanel extends JPanel
         CourseBox = new JComboBox(courses);
         CourseBox.setBounds(100, 100, 225, 100);
         
-        RemovePaperButton.setBounds(300, 100, 200, 100);
+        RemovePaperButton.setBounds(340, 100, 200, 100);
         
         MainMenuInfo.setBounds(580, 10, 200, 330);
         MainMenuInfo.setText("Will add a variable later");

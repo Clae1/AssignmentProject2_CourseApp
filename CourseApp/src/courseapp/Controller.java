@@ -57,16 +57,6 @@ public class Controller implements ActionListener
             }
             break;
             
-            //This is just a button to enter the Course menu
-            //It will change the Course flag to true to indicate to View 
-            //to update the frame to new components 
-            case "Choose your papers":
-            {
-                System.out.println("The Choose your papers button works");
-                this.model.changeToCourse();
-            }
-            break;
-            
             //Same thing as above, but to enter Remove Menu instead.
             case "Remove your chosen papers":
             {
@@ -78,6 +68,8 @@ public class Controller implements ActionListener
             case "comboBoxChanged":
             {
                 System.out.println("The JBOX button works");
+                String course = (String)this.view.mainMenuPanel.CourseBox.getSelectedItem();
+                this.model.changeToCourse(course);
             }
             break;
         }

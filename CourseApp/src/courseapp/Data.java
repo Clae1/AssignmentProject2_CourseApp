@@ -12,6 +12,8 @@ public class Data
 {
     boolean loginFlag = false;
     boolean quitFlag = false;
-    boolean CourseFlag = false;
+    boolean Course1Flag = false;
+    boolean Course2Flag = false;
+    boolean Course3Flag = false;
     boolean removeFlag = false;
 }

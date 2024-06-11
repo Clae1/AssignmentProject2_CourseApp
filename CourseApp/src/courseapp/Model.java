@@ -33,18 +33,47 @@ public class Model extends Observable
         this.notifyObservers(this.data);
     }
     
-    public void changeToCourse()
+    public void changeToCourse(String course)
     {
-        this.data.CourseFlag = true;
+        switch (course)
+        {
+            case("Bachelor of Computer Science"):
+            {
+                this.data.Course1Flag = true;
+            }
+            break;
+            
+            case("Bachelor of Business"):
+            {
+                this.data.Course2Flag = true;
+            }
+            break;
+            
+            case("Bachelor of Engineering Technology"):
+            {
+                this.data.Course3Flag = true;
+            }
+            break;
+        }
         this.setChanged(); 
         this.notifyObservers(this.data);
     }
     
     public void checkFlag()
     {
-        if (this.data.CourseFlag == true)
+        if (this.data.Course1Flag == true)
         {
-            this.data.CourseFlag = false;
+            this.data.Course1Flag = false;
+        }
+        
+        if (this.data.Course2Flag == true)
+        {
+            this.data.Course2Flag = false;
+        }
+        
+        if (this.data.Course3Flag == true)
+        {
+            this.data.Course3Flag = false;
         }
         this.setChanged(); 
         this.notifyObservers(this.data);

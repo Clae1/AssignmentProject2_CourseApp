@@ -14,17 +14,19 @@ import javax.swing.JPanel;
  *
  * @author claeo
  */
-public class CoursePanel extends JPanel 
+public class CoursePanel2 extends JPanel
 {
-    public JLabel check = new JLabel("This page works");
+    public JLabel Check = new JLabel("Course 2 works !!!");
     public JButton ExitButton = new JButton("EXIT");
     public JComboBox CourseBox;
     public JComboBox PaperBox;
     
-    public CoursePanel()
+    public CoursePanel2()
     {
         this.setBackground(Color.GRAY);
         this.setLayout(null);
+        
+        Check.setBounds(200, 200, 100, 50);
         
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
@@ -32,9 +34,9 @@ public class CoursePanel extends JPanel
         String[] paper = {};
         PaperBox = new JComboBox(paper);
         PaperBox.setBounds(300, 100, 225, 100);
-     
+        
+        this.add(Check);
         this.add(PaperBox);
         this.add(ExitButton);
     }
-    
 }

@@ -19,8 +19,10 @@ public class View extends JFrame implements Observer {
     //For MainPage
     public MainMenuPanel mainMenuPanel = new MainMenuPanel();
     
-    //For Course page
-    public CoursePanel coursePanel = new CoursePanel();
+    //For Course pages
+    public CoursePanel1 coursePanel1 = new CoursePanel1();
+    public CoursePanel2 coursePanel2 = new CoursePanel2();
+    public CoursePanel3 coursePanel3 = new CoursePanel3();
     
     //For Remove page
     public RemovePanel removePanel = new RemovePanel();
@@ -47,10 +49,28 @@ public class View extends JFrame implements Observer {
         this.repaint();
     }
     
-    public void CourseMenu()
+    public void CourseMenu1()
     {
         this.getContentPane().removeAll();
-        this.add(coursePanel);
+        this.add(coursePanel1);
+        this.setVisible(true);
+        this.revalidate();
+        this.repaint();
+    }
+    
+    public void CourseMenu2()
+    {
+        this.getContentPane().removeAll();
+        this.add(coursePanel2);
+        this.setVisible(true);
+        this.revalidate();
+        this.repaint();
+    }
+    
+    public void CourseMenu3()
+    {
+        this.getContentPane().removeAll();
+        this.add(coursePanel3);
         this.setVisible(true);
         this.revalidate();
         this.repaint();
@@ -68,7 +88,9 @@ public class View extends JFrame implements Observer {
   
     public void addActionListener(ActionListener listener)
     {
-        coursePanel.ExitButton.addActionListener(listener);
+        coursePanel1.ExitButton.addActionListener(listener);
+        coursePanel2.ExitButton.addActionListener(listener);
+        coursePanel3.ExitButton.addActionListener(listener);
         
         removePanel.ExitButton.addActionListener(listener);
         
@@ -76,12 +98,11 @@ public class View extends JFrame implements Observer {
         
         mainMenuPanel.RemovePaperButton.addActionListener(listener);
         mainMenuPanel.CourseBox.addActionListener(listener);
-        
-        
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Observable o, Object arg) 
+    {
         Data data = (Data) arg;
         if (!data.loginFlag) {
             loginPanel.unInput.setText("");
@@ -89,20 +110,30 @@ public class View extends JFrame implements Observer {
             loginPanel.message.setText("Invalid username or password.");
         }
 
-        if (data.loginFlag) {
+        if (data.loginFlag) 
+        {
             this.mainMenu();
         }
         
-        // Only allows one menu on.
-        if (data.CourseFlag) {
-            this.CourseMenu();
+        // These if statements are for the three course pages that the user
+        // can enter by clicking on one of the items in the combox list. 
+        if (data.Course1Flag) {
+            this.CourseMenu1();
+        } 
+        if (data.Course2Flag) {
+            this.CourseMenu2();
+        } 
+        if (data.Course3Flag) {
+            this.CourseMenu3();
         } 
         
-        else if (data.removeFlag){
+        // Will change the frame to the remove paper 
+        if (data.removeFlag)
+        {
             this.RemoveMenu();
         } 
         
-        else if (!data.CourseFlag && !data.removeFlag) 
+        else if ((!data.Course1Flag || !data.Course2Flag || !data.Course3Flag) && !data.removeFlag) 
         {
             this.mainMenu();
         }
