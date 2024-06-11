@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package courseapp;
+package Model;
 
 /**
  *
  * @author claeo
  */
+import courseapp.UserDatabase;
 import java.sql.SQLException;
 import java.util.Observable;
 
@@ -40,18 +41,21 @@ public class Model extends Observable
             case("Bachelor of Computer Science"):
             {
                 this.data.Course1Flag = true;
+                this.data.loginFlag = false;
             }
             break;
             
             case("Bachelor of Business"):
             {
                 this.data.Course2Flag = true;
+                this.data.loginFlag = false;
             }
             break;
             
             case("Bachelor of Engineering Technology"):
             {
                 this.data.Course3Flag = true;
+                this.data.loginFlag = false;
             }
             break;
         }
@@ -64,16 +68,19 @@ public class Model extends Observable
         if (this.data.Course1Flag == true)
         {
             this.data.Course1Flag = false;
+            this.data.loginFlag = true;
         }
         
         if (this.data.Course2Flag == true)
         {
             this.data.Course2Flag = false;
+            this.data.loginFlag = true;
         }
         
         if (this.data.Course3Flag == true)
         {
             this.data.Course3Flag = false;
+            this.data.loginFlag = true;
         }
         this.setChanged(); 
         this.notifyObservers(this.data);

@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package courseapp;
+package View;
 
+import Model.Data;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
@@ -88,14 +89,18 @@ public class View extends JFrame implements Observer {
   
     public void addActionListener(ActionListener listener)
     {
+        //For the course pages 
         coursePanel1.ExitButton.addActionListener(listener);
         coursePanel2.ExitButton.addActionListener(listener);
         coursePanel3.ExitButton.addActionListener(listener);
         
+        //For the remove page 
         removePanel.ExitButton.addActionListener(listener);
         
+        //For login page 
         loginPanel.loginButton.addActionListener(listener);
         
+        //For Main menu page
         mainMenuPanel.RemovePaperButton.addActionListener(listener);
         mainMenuPanel.CourseBox.addActionListener(listener);
     }
@@ -104,38 +109,31 @@ public class View extends JFrame implements Observer {
     public void update(Observable o, Object arg) 
     {
         Data data = (Data) arg;
+         // These if statements are for the three course pages that the user
+        // can enter by clicking on one of the items in the combox list. 
+        if (data.Course1Flag) {
+            this.CourseMenu1();
+        } 
+        else if (data.Course2Flag) {   
+            this.CourseMenu2();
+        } 
+        else if (data.Course3Flag) {
+            this.CourseMenu3();
+        } 
+        
         if (!data.loginFlag) {
             loginPanel.unInput.setText("");
             loginPanel.pwInput.setText("");
             loginPanel.message.setText("Invalid username or password.");
         }
 
-        if (data.loginFlag) 
-        {
+        if (data.loginFlag) {
             this.mainMenu();
         }
-        
-        // These if statements are for the three course pages that the user
-        // can enter by clicking on one of the items in the combox list. 
-        if (data.Course1Flag) {
-            this.CourseMenu1();
-        } 
-        if (data.Course2Flag) {
-            this.CourseMenu2();
-        } 
-        if (data.Course3Flag) {
-            this.CourseMenu3();
-        } 
-        
+                
         // Will change the frame to the remove paper 
-        if (data.removeFlag)
-        {
+        if (data.removeFlag){
             this.RemoveMenu();
         } 
-        
-        else if ((!data.Course1Flag || !data.Course2Flag || !data.Course3Flag) && !data.removeFlag) 
-        {
-            this.mainMenu();
-        }
     }
 }

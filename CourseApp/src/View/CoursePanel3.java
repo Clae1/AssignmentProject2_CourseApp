@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package courseapp;
+package View;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -14,14 +14,14 @@ import javax.swing.JPanel;
  *
  * @author claeo
  */
-public class CoursePanel1 extends JPanel 
+public class CoursePanel3 extends JPanel 
 {
-    public JLabel Check = new JLabel("Page 1 works");
+    public JLabel Check = new JLabel("Page 3 works");
     public JButton ExitButton = new JButton("EXIT");
     public JComboBox CourseBox;
     public JComboBox PaperBox;
     
-    public CoursePanel1()
+    public CoursePanel3()
     {
         this.setBackground(Color.GRAY);
         this.setLayout(null);
@@ -39,5 +39,4 @@ public class CoursePanel1 extends JPanel
         this.add(PaperBox);
         this.add(ExitButton);
     }
-    
 }

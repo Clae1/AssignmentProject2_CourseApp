@@ -8,6 +8,7 @@ package courseapp;
  *
  * @author claeo
  */
+import Model.Data;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -44,7 +45,6 @@ public class UserDatabase
         }
     }
     
-
     public Data checkName(String username, String password) throws SQLException
     {
         Data data = new Data(); // Initialize an instance of Data

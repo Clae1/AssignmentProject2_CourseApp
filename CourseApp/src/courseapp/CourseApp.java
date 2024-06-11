@@ -8,6 +8,9 @@ package courseapp;
  *
  * @author claeo
  */
+import Model.Model;
+import Controller.Controller;
+import View.View;
 import java.sql.SQLException;
 
 public class CourseApp 
