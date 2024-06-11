@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -43,6 +44,7 @@ public class RemovePanel extends JPanel
         RemoveInput.setPreferredSize(new Dimension(100, 50));
         
         RTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        RTitle.setFont(new Font("Arial", Font.BOLD, 20));
         
         // PaperDisplay settings
         PaperDisplay.setText("These will display papers");
@@ -54,13 +56,11 @@ public class RemovePanel extends JPanel
         
         // Panel to hold the Exit button and title
         JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.setBackground(Color.WHITE);
         topPanel.add(ExitButton, BorderLayout.WEST);
         topPanel.add(RTitle, BorderLayout.CENTER);
          
         // Panel to hold the input and remove button
         JPanel inputPanel = new JPanel();
-        inputPanel.setBackground(Color.WHITE);
         inputPanel.add(pRemove);
         inputPanel.add(RemoveInput);
         inputPanel.add(RemoveButton);
