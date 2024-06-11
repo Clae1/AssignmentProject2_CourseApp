@@ -22,8 +22,8 @@ import javax.swing.JTextField;
  *
  * @author claeo
  */
-public class View extends JFrame implements Observer
-{
+public class View extends JFrame implements Observer {
+
     //For user page
     private JPanel userPanel = new JPanel();
     private JLabel uName = new JLabel("Username: ");
@@ -33,25 +33,27 @@ public class View extends JFrame implements Observer
     private JLabel wrongName = new JLabel("Wrong username or password!");
     private JButton loginButton = new JButton("Log in");
     public JLabel message = new JLabel("Welcome!", JLabel.CENTER);
-    
+
     //For MainPage
     public JButton ExitButton = new JButton("EXIT");
     public JButton PaperButton = new JButton("Choose your papers");
     public JButton RemovePaperButton = new JButton("Remove your chosen papers");
     private JPanel MainMenuPanel = new JPanel();
     public JTextArea MainMenuInfo = new JTextArea();
-    
+
     //For Course page
     private JPanel CoursePanel = new JPanel();
-    private JLabel check = new JLabel("This page works"); 
-    
+    private JLabel check = new JLabel("This page works");
+
+    //For Remove page
+    private JPanel RemovePanel = new JPanel();
+
     //Constructor 
-    public View()
-    {
+    public View() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 200);
         this.setLocationRelativeTo(null); //Make the frame located at the absolute center of the screen
-        
+
         this.userPanel.add(uName);
         this.userPanel.add(unInput);
         this.userPanel.add(pWord);
@@ -61,90 +63,98 @@ public class View extends JFrame implements Observer
         this.add(userPanel);
         this.setVisible(true);
     }
-    
-    public void mainMenu()
-    {
+
+    public void mainMenu() {
         //Changing the size and location of the GUI
-        this.setLocation(500,300);
-        this.setSize(800, 400); 
-        
+        this.setLocation(500, 300);
+        this.setSize(800, 400);
+
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
-        
+
         PaperButton.setBounds(100, 100, 150, 100); //(x, y, x,y)
-        
+
         RemovePaperButton.setBounds(300, 100, 200, 100);
-        
+
         MainMenuInfo.setBounds(580, 10, 200, 330);
         MainMenuInfo.setText("Will add a variable later");
         MainMenuInfo.setEditable(false);
-        
+
         MainMenuPanel.add(MainMenuInfo);
         MainMenuPanel.add(ExitButton);
         MainMenuPanel.add(PaperButton);
         MainMenuPanel.add(RemovePaperButton);
-        
+
         MainMenuPanel.setBackground(Color.GRAY);
         MainMenuPanel.setLayout(null);
-        
+
         this.getContentPane().removeAll();
         this.add(MainMenuPanel);
         this.setVisible(true);
         this.revalidate();
         this.repaint();
     }
-    
-    public void CourseMenu()
-    {
+
+    public void CourseMenu() {
         CoursePanel.add(check);
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
         CoursePanel.add(ExitButton);
         CoursePanel.setBackground(Color.GRAY);
         CoursePanel.setLayout(null);
-        
+
         this.getContentPane().removeAll();
         this.add(CoursePanel);
         this.setVisible(true);
         this.revalidate();
         this.repaint();
     }
-    
-  
-    public void addActionListener(ActionListener listener)
-    {
+
+    public void RemoveMenu() {
+        RemovePanel.add(check);
+        ExitButton.setBounds(0, 0, 100, 50);
+        ExitButton.setBackground(Color.RED);
+        RemovePanel.add(ExitButton);
+        RemovePanel.setBackground(Color.GRAY);
+        RemovePanel.setLayout(null);
+
+        this.getContentPane().removeAll();
+        this.add(RemovePanel);
+        this.setVisible(true);
+        this.revalidate();
+        this.repaint();
+    }
+
+    public void addActionListener(ActionListener listener) {
         this.RemovePaperButton.addActionListener(listener);
         this.PaperButton.addActionListener(listener);
         this.ExitButton.addActionListener(listener);
         this.loginButton.addActionListener(listener);
     }
-    
 
     @Override
-    public void update(Observable o, Object arg)
-    {
-        Data data = (Data) arg; 
-        if (!data.loginFlag)
-        {
+    public void update(Observable o, Object arg) {
+        Data data = (Data) arg;
+        if (!data.loginFlag) {
             this.unInput.setText("");
             this.pwInput.setText("");
             this.message.setText("Invalid username or password.");
         }
-        
-        if (data.loginFlag)
-        {
-           this.mainMenu();
+
+        if (data.loginFlag) {
+            this.mainMenu();
         }
-        
-        if (data.CourseFlag)
-        {
+
+        // This will make it so it only goes through one page at a time.
+        // May change later
+        if (data.CourseFlag) {
             this.CourseMenu();
-        }
-        
-        if (!data.CourseFlag)
-        {
+
+        } else if (data.removeFlag) {
+            this.RemoveMenu();
+
+        } else {
             this.mainMenu();
         }
     }
 }
-
