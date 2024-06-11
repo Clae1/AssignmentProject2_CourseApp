@@ -1,15 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package View;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -17,36 +19,55 @@ import javax.swing.JTextField;
  */
 public class RemovePanel extends JPanel 
 {
-    //For RemoveMenu
+    // For RemoveMenu
     public JTextArea PaperDisplay = new JTextArea();
+    public JScrollPane scrollPane;
     private JLabel pRemove = new JLabel("Which paper would you like to remove? ");
+    private JLabel RTitle = new JLabel("Remove Course Page");
     public JTextField RemoveInput = new JTextField(10);
     public JButton RemoveButton = new JButton("REMOVE COURSE/COURSES");
     public JButton ExitButton = new JButton("EXIT");
     
-    
     public RemovePanel()
     {
-        this.setLayout(null);
-        this.setBackground(Color.GRAY);
+        this.setLayout(new BorderLayout(10, 10));
+        this.setBackground(Color.WHITE);
         
-        RemoveInput.setBounds(100, 100, 100, 50);
-        
-        ExitButton.setBounds(0, 0, 100, 50);
+        // Exit button settings
+        ExitButton.setPreferredSize(new Dimension(100, 50));
         ExitButton.setBackground(Color.RED);
         
-        RemoveButton.setBounds(250, 100, 250, 50);
+        // Remove button settings
+        RemoveButton.setPreferredSize(new Dimension(250, 50));
         
+        RemoveInput.setPreferredSize(new Dimension(100, 50));
         
-        PaperDisplay.setBounds(580, 10, 200, 330);
+        RTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        // PaperDisplay settings
         PaperDisplay.setText("These will display papers");
+        PaperDisplay.setLineWrap(true);
         PaperDisplay.setEditable(false);
+        PaperDisplay.setMargin(new Insets(10, 10, 10, 10));
+        scrollPane = new JScrollPane(PaperDisplay);
+        scrollPane.setPreferredSize(new Dimension(300, 400));
         
-        this.add(pRemove);
-        this.add(RemoveInput);
-        this.add(RemoveButton);
-        this.add(PaperDisplay);
-        this.add(ExitButton);
+        // Panel to hold the Exit button and title
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(Color.WHITE);
+        topPanel.add(ExitButton, BorderLayout.WEST);
+        topPanel.add(RTitle, BorderLayout.CENTER);
+         
+        // Panel to hold the input and remove button
+        JPanel inputPanel = new JPanel();
+        inputPanel.setBackground(Color.WHITE);
+        inputPanel.add(pRemove);
+        inputPanel.add(RemoveInput);
+        inputPanel.add(RemoveButton);
         
+        // Adding components to the main panel
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(inputPanel, BorderLayout.CENTER);
+        this.add(scrollPane, BorderLayout.EAST);
     }
 }
