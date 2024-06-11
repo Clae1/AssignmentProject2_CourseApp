@@ -26,20 +26,22 @@ public class RemovePanel extends JPanel
     
     public RemovePanel()
     {
+        this.setLayout(null);
+        this.setBackground(Color.GRAY);
+        
+        RemoveInput.setBounds(100, 100, 150, 100);
+        
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
-        
-        this.add(PaperDisplay);
-        this.add(ExitButton);
         
         PaperDisplay.setBounds(580, 10, 200, 330);
         PaperDisplay.setText("These will display papers");
         PaperDisplay.setEditable(false);
+        
         this.add(pRemove);
         this.add(RemoveInput);
-        
-        this.setBackground(Color.GRAY);
-        this.setLayout(null);
+        this.add(PaperDisplay);
+        this.add(ExitButton);
     }
 }
 

@@ -6,6 +6,7 @@ package courseapp;
 
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,16 +18,23 @@ public class CoursePanel extends JPanel
 {
     public JLabel check = new JLabel("This page works");
     public JButton ExitButton = new JButton("EXIT");
+    public JComboBox CourseBox;
+    public JComboBox PaperBox;
     
     public CoursePanel()
     {
+        this.setBackground(Color.GRAY);
+        this.setLayout(null);
+        
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
         
-        this.add(check);
+        String[] paper = {};
+        PaperBox = new JComboBox(paper);
+        PaperBox.setBounds(300, 100, 225, 100);
+     
+        this.add(PaperBox);
         this.add(ExitButton);
-        this.setBackground(Color.GRAY);
-        this.setLayout(null);
     }
     
 }

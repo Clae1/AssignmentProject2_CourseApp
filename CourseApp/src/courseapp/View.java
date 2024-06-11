@@ -69,10 +69,15 @@ public class View extends JFrame implements Observer {
     public void addActionListener(ActionListener listener)
     {
         coursePanel.ExitButton.addActionListener(listener);
+        
         removePanel.ExitButton.addActionListener(listener);
+        
         loginPanel.loginButton.addActionListener(listener);
+        
         mainMenuPanel.RemovePaperButton.addActionListener(listener);
-        mainMenuPanel.PaperButton.addActionListener(listener);
+        mainMenuPanel.CourseBox.addActionListener(listener);
+        
+        
     }
 
     @Override
@@ -89,14 +94,14 @@ public class View extends JFrame implements Observer {
         }
         
         // Only allows one menu on.
-        if (data.CourseFlag) 
-        {
+        if (data.CourseFlag) {
             this.CourseMenu();
         } 
-        else if (data.removeFlag) 
-        {
+        
+        else if (data.removeFlag){
             this.RemoveMenu();
         } 
+        
         else if (!data.CourseFlag && !data.removeFlag) 
         {
             this.mainMenu();

@@ -74,6 +74,12 @@ public class Controller implements ActionListener
                 this.model.changeToRemove();
             }
             break;
+            
+            case "comboBoxChanged":
+            {
+                System.out.println("The JBOX button works");
+            }
+            break;
         }
     }
 }

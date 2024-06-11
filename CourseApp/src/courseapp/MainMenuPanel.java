@@ -6,6 +6,7 @@ package courseapp;
 
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -17,16 +18,22 @@ public class MainMenuPanel extends JPanel
 {
     //For MainPage
     public JButton ExitButton = new JButton("EXIT");
-    public JButton PaperButton = new JButton("Choose your papers");
+    public JComboBox CourseBox = new JComboBox();
     public JButton RemovePaperButton = new JButton("Remove your chosen papers");
     public JTextArea MainMenuInfo = new JTextArea();
     
     public MainMenuPanel()
     {
+        this.setBackground(Color.GRAY);
+        this.setLayout(null);
+        
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
         
-        PaperButton.setBounds(100, 100, 150, 100); //(x, y, x,y)
+        String[] courses = 
+        {"Bachelor of Computer Science", "Bachelor of Business", "Bachelor of Engineering Technology"};        
+        CourseBox = new JComboBox(courses);
+        CourseBox.setBounds(100, 100, 225, 100);
         
         RemovePaperButton.setBounds(300, 100, 200, 100);
         
@@ -36,10 +43,7 @@ public class MainMenuPanel extends JPanel
         
         this.add(MainMenuInfo);
         this.add(ExitButton);
-        this.add(PaperButton);
+        this.add(CourseBox);
         this.add(RemovePaperButton);
-        
-        this.setBackground(Color.GRAY);
-        this.setLayout(null);
     }
 }
