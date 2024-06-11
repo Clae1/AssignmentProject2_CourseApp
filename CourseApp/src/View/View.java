@@ -92,6 +92,7 @@ public class View extends JFrame implements Observer {
         //For the course pages 
         coursePanel1.ExitButton.addActionListener(listener);
         coursePanel1.AddButton.addActionListener(listener);
+        coursePanel1.PaperBox.addActionListener(listener);
         
         coursePanel2.ExitButton.addActionListener(listener);
         coursePanel3.ExitButton.addActionListener(listener);

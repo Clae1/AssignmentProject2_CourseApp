@@ -84,8 +84,66 @@ public class UserDatabase
         }
         return data;
     }
-
     
+    public Data AddPaper(String paper, String username) throws SQLException
+    {
+        Data data = new Data(); // Initialize an instance of Data
+        String[] tablePaper;
+        try
+        {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT studentid, paper FROM StudentTable "
+                    + "WHERE studentid = '" + username + "'");
+            
+            if (rs.next())
+            {
+                //ChatGPT code
+                String currentPapers = rs.getString("paper");
+                if (currentPapers == null) 
+                {
+                    currentPapers = ""; // Initialize to empty if null
+                }
+                tablePaper = currentPapers.isEmpty() ? new String[0] : currentPapers.split(",");
+                //end of code
+                for (String tablePaper1 : tablePaper) 
+                {
+                    if (paper.equalsIgnoreCase(tablePaper1)) 
+                    {
+                        data.duplicateFlag = true;
+                        rs.close(); 
+                        statement.close(); 
+                        return data;
+                    } 
+                }
+                if (data.PaperCount > 6)
+                {
+                    data.MaxPaper = true;
+                    rs.close(); 
+                    statement.close(); 
+                    return data;
+                }    
+               System.out.println("No duplicates and has not reached limit");
+               //ChatGPT code
+               // Add the new paper to the existing papers
+               String updatedPapers = currentPapers.isEmpty() ? paper : currentPapers + "," + paper;
+               System.out.println("Updated Papers: " + updatedPapers); // Debug output
+
+               // Use Statement to execute the update query
+               String updateQuery = "UPDATE StudentTable SET paper = '" + updatedPapers + "' WHERE studentid = '" + username + "'";
+               statement.executeUpdate(updateQuery);
+               //end of code
+
+            }
+            rs.close();
+            statement.close(); 
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("SQL Exception: " + ex.getMessage());
+        }
+        return data;     
+    }
+
     private boolean checkTableExisitng(String newTableName) throws SQLException
     {
         boolean flag = false;

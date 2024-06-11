@@ -16,4 +16,12 @@ public class Data
     public boolean Course2Flag = false;
     public boolean Course3Flag = false;
     public boolean removeFlag = false;
+    
+    // Is used when there is a duplicate paper when adding papers
+    public boolean duplicateFlag = false;
+            
+    // Will keep count of the papers that the user plans to add to their 
+    // account. 
+    public int PaperCount = 0;
+    public boolean MaxPaper = false;
 }
