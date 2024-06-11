@@ -49,4 +49,12 @@ public class Model extends Observable
         this.setChanged(); 
         this.notifyObservers(this.data);
     }
+    
+    public void changeToRemove()
+    {
+        this.data.removeFlag = true;
+        this.setChanged(); 
+        this.notifyObservers(this.data);
+        this.data.removeFlag = false;
+    }
 }
