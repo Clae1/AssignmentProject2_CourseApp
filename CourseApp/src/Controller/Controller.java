@@ -79,6 +79,13 @@ public class Controller implements ActionListener
             {
                 System.out.println("Remove Course button works");
             }
+            break;
+            
+            case "ADD PAPER":
+            {
+                System.out.println("ADD PAPER button works");
+            }
+            break;
         }
     }
 }

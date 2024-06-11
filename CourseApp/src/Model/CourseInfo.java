@@ -8,7 +8,8 @@ package Model;
  *
  * @author claeo
  */
-public class CourseInfo 
+public interface CourseInfo 
 {
- 
+    public String[] coursePaperReader();   
+    public String courseInfoReader();
 }

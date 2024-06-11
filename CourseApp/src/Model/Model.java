@@ -8,7 +8,6 @@ package Model;
  *
  * @author claeo
  */
-import courseapp.UserDatabase;
 import java.sql.SQLException;
 import java.util.Observable;
 
