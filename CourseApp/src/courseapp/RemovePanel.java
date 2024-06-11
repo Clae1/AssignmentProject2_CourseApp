@@ -21,6 +21,7 @@ public class RemovePanel extends JPanel
     public JTextArea PaperDisplay = new JTextArea();
     private JLabel pRemove = new JLabel("Which paper would you like to remove? ");
     public JTextField RemoveInput = new JTextField(10);
+    public JButton RemoveButton = new JButton("REMOVE COURSE/COURSES");
     public JButton ExitButton = new JButton("EXIT");
     
     
@@ -29,10 +30,13 @@ public class RemovePanel extends JPanel
         this.setLayout(null);
         this.setBackground(Color.GRAY);
         
-        RemoveInput.setBounds(100, 100, 150, 100);
+        RemoveInput.setBounds(100, 100, 100, 50);
         
         ExitButton.setBounds(0, 0, 100, 50);
         ExitButton.setBackground(Color.RED);
+        
+        RemoveButton.setBounds(250, 100, 250, 50);
+        
         
         PaperDisplay.setBounds(580, 10, 200, 330);
         PaperDisplay.setText("These will display papers");
@@ -40,8 +44,9 @@ public class RemovePanel extends JPanel
         
         this.add(pRemove);
         this.add(RemoveInput);
+        this.add(RemoveButton);
         this.add(PaperDisplay);
         this.add(ExitButton);
+        
     }
 }
-

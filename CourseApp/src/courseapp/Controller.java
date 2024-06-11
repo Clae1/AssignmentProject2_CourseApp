@@ -72,6 +72,11 @@ public class Controller implements ActionListener
                 this.model.changeToCourse(course);
             }
             break;
+            
+            case "REMOVE COURSE/COURSES":
+            {
+                System.out.println("Remove Course button works");
+            }
         }
     }
 }
