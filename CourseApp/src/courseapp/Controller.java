@@ -80,6 +80,11 @@ public class Controller implements ActionListener
                 System.out.println("The JBOX button works");
             }
             break;
+            
+            case "REMOVE COURSE/COURSES":
+            {
+                System.out.println("Remove Course button works");
+            }
         }
     }
 }
