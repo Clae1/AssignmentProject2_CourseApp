@@ -48,6 +48,12 @@ public class UserDatabase
     public Data checkName(String username, String password) throws SQLException
     {
         Data data = new Data(); // Initialize an instance of Data
+        if (username.length() > 10 || password.length() > 10)
+        {
+            data.loginFlag = false;
+            System.out.println("Bad Login");
+            return data;
+        }
         try
         {
             Statement statement = conn.createStatement();
@@ -168,6 +174,28 @@ public class UserDatabase
             System.out.println(ex);
         }
         return userPaper;
+    }
+    
+    public void RemovePaper(String paper, String username) throws SQLException
+    {
+        Data data = new Data(); // Initialize an instance of Data
+        String[] tablePaper = new String[6];
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT studentid, paper FROM StudentTable "
+                + "WHERE studentid = '" + username + "'");
+        
+        if (rs.next())
+        {
+            tablePaper = rs.getString("paper").split(",");
+            for (int i = 0; i < tablePaper.length; ++i) 
+            {
+                if (paper.equalsIgnoreCase(tablePaper[i])) 
+                {
+                    System.out.println("Paper has been removed");
+                    tablePaper[i] = "";
+                }     
+            }
+        }
     }
     
     

@@ -91,6 +91,12 @@ public class Controller implements ActionListener
                     this.view.coursePanel1.PaperBox.getSelectedItem();
                     break;
                 }
+                
+                if (source == this.view.removePanel.PaperBox)
+                {
+                    this.view.removePanel.PaperBox.getSelectedItem();
+                    break;
+                }
                 String course = (String)this.view.mainMenuPanel.CourseBox.getSelectedItem();
                 this.model.changeToCourse(course);
             }
@@ -99,8 +105,13 @@ public class Controller implements ActionListener
             case "REMOVE COURSE/COURSES":
             {
                 System.out.println("Remove Course button works");
-                
-                
+                String paper = (String) this.view.removePanel.PaperBox.getSelectedItem();
+                String username = this.model.username;
+                try {
+                    this.model.RemovePaper(paper, username);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             break;
             

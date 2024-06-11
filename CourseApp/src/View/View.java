@@ -109,6 +109,7 @@ public class View extends JFrame implements Observer
         //For the remove page 
         removePanel.ExitButton.addActionListener(listener);
         removePanel.RemoveButton.addActionListener(listener);
+        removePanel.PaperBox.addActionListener(listener);
         
         //For login page 
         loginPanel.loginButton.addActionListener(listener);
