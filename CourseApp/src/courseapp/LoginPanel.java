@@ -26,11 +26,20 @@ public class LoginPanel extends JPanel
     
     public LoginPanel()
     {
-        this.add(uName);
-        this.add(unInput);
-        this.add(pWord);
-        this.add(pwInput);
-        this.add(loginButton);
+        this.setLayout(new BorderLayout());
+        
+        // ChatGPT was used here to solve a bug with the GUI.
+        // For some reason upon adding this.setLayout(new BorderLayout());
+        // the GUI disappeared 
+        JPanel inputPanel = new JPanel();
+        inputPanel.add(uName);
+        inputPanel.add(unInput);
+        inputPanel.add(pWord);
+        inputPanel.add(pwInput);
+        inputPanel.add(loginButton);
+        this.add(inputPanel, BorderLayout.CENTER);
+        // End of code
+        
         this.add(this.message, BorderLayout.SOUTH);
     }
 }

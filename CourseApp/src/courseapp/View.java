@@ -4,20 +4,10 @@
  */
 package courseapp;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 /**
  *
  * @author claeo
@@ -41,7 +31,6 @@ public class View extends JFrame implements Observer {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 200);
         this.setLocationRelativeTo(null); 
-        this.setLayout(new BorderLayout());
         this.add(loginPanel);
         this.setVisible(true);
     }
@@ -98,13 +87,19 @@ public class View extends JFrame implements Observer {
         if (data.loginFlag) {
             this.mainMenu();
         }
+        
         // Only allows one menu on.
-        if (data.CourseFlag) {
-        this.CourseMenu();
-    } else if (data.removeFlag) {
-        this.RemoveMenu();
-    } else if (!data.CourseFlag && !data.removeFlag) {
-        this.mainMenu();
+        if (data.CourseFlag) 
+        {
+            this.CourseMenu();
+        } 
+        else if (data.removeFlag) 
+        {
+            this.RemoveMenu();
+        } 
+        else if (!data.CourseFlag && !data.removeFlag) 
+        {
+            this.mainMenu();
+        }
     }
-}
 }
