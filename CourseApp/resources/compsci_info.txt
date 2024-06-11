@@ -1,4 +1,5 @@
 
+--------------------------------------------------------------------------------
 Program code: AK3693 
 Level: Undergraduate
 Points: 360
@@ -8,22 +9,18 @@ Starts: Fall semester
 Fees: $ 8,435 - $8,814 per semester 
 
 
-What you might be expect in this course:
-Studying business, you will be offered with a dynamic and comprehensive 
-educational experience tailored to prepare you for success in the ever-evolving 
-world of commerce. Expect a curriculum designed to blend theoretical knowledge 
-with practical skills, equipping you with a solid foundation in areas such as 
-accounting, finance, marketing, management, and entrepreneurship. Classes are 
-typically interactive, encouraging lively discussions and real-world 
-problem-solving scenarios. You'll engage with industry-relevant case studies, 
-guest lectures from experienced professionals, and opportunities for internships 
-or co-op placements to gain hands-on experience. The course fosters a supportive 
-learning environment, with accessible faculty members who are experts in their 
-fields and dedicated to helping students thrive. You can also expect a 
-multicultural campus community, providing valuable networking opportunities and 
-exposure to diverse perspectives. In addition to academic rigor, this course 
-emphasizes the development of soft skills such as critical thinking, 
-communication, and teamwork, which are essential for success in the business 
-world. Whether your aspirations lie in corporate leadership, entrepreneurship, 
-or nonprofit management, studying business at AUT will empower you to make 
- contributions in your chosen field.
+Studying computer science, you will be offered a cutting-edge and comprehensive educational 
+experience designed to prepare you for success in the rapidly evolving field of technology. 
+Expect a curriculum that integrates theoretical foundations with practical skills, providing 
+you with a strong base in areas such as programming, algorithms, data structures, software 
+engineering, artificial intelligence, and cybersecurity. Classes are typically interactive, 
+fostering engaging discussions and hands-on problem-solving. You'll work with industry-relevant 
+projects, benefit from guest lectures by experienced professionals, and have opportunities for 
+internships or co-op placements to gain real-world experience. The course promotes a supportive 
+learning environment, with approachable faculty members who are experts in their fields and dedicated 
+to student success. You can also expect a diverse campus community, offering valuable networking 
+opportunities and exposure to a range of perspectives. In addition to academic rigor, this course 
+emphasizes the development of soft skills such as critical thinking, communication, and teamwork, 
+which are vital in the tech industry. Whether your goals are in software development, data science, 
+or IT management, studying computer science at AUT will equip you to make significant contributions in your chosen area.
+--------------------------------------------------------------------------------
