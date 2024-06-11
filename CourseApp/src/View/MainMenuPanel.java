@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -46,11 +48,15 @@ public class MainMenuPanel extends JPanel
         RemovePaperButton.setPreferredSize(new Dimension(350, 100));
         
         MainMenuInfo.setLineWrap(true);
-        MainMenuInfo.setText("Will add a variable later");
+        MainMenuInfo.setText("Welcome to the Course Selector. To select a paper of your choice, "
+                + "please click on the dropdown and choose your desired course. Alternative, you may choose to remove any paper you have already selected.");
         MainMenuInfo.setEditable(false);
         MainMenuInfo.setMargin(new Insets(10, 10, 10, 10));
         scrollPane = new JScrollPane(MainMenuInfo);
         scrollPane.setPreferredSize(new Dimension(300, 400));
+        
+        MTitle.setFont(new Font("Arial", Font.BOLD, 20));
+        MTitle.setHorizontalAlignment(SwingConstants.CENTER);
         // Panel to hold the Exit button and title
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.add(ExitButton, BorderLayout.WEST);
