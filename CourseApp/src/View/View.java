@@ -13,8 +13,9 @@ import javax.swing.JFrame;
  *
  * @author claeo
  */
-public class View extends JFrame implements Observer {
-//For user page
+public class View extends JFrame implements Observer 
+{
+    //For user page
     public LoginPanel loginPanel = new LoginPanel();
     
     //For MainPage
@@ -107,6 +108,7 @@ public class View extends JFrame implements Observer {
         
         //For the remove page 
         removePanel.ExitButton.addActionListener(listener);
+        removePanel.RemoveButton.addActionListener(listener);
         
         //For login page 
         loginPanel.loginButton.addActionListener(listener);
@@ -140,11 +142,13 @@ public class View extends JFrame implements Observer {
 
         if (data.loginFlag) 
         {
+            mainMenuPanel.Papers.setText("Here are your papers: "+ data.UserPapers);
             this.mainMenu();
         }
                 
         // Will change the frame to the remove paper 
-        if (data.removeFlag){
+        if (data.removeFlag)
+        {
             this.RemoveMenu();
         }
         

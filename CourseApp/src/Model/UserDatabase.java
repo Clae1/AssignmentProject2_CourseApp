@@ -149,6 +149,28 @@ public class UserDatabase
         return data;     
     }
     
+    public String checkPaper(String username) throws SQLException
+    {
+        String userPaper = "";
+        try
+        {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT studentid, password, paper FROM StudentTable "
+                    + "WHERE studentid = '" + username + "'");
+            if (rs.next())
+            {
+                userPaper = rs.getString("paper");
+            }
+        
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex);
+        }
+        return userPaper;
+    }
+    
+    
     private boolean checkTableExisitng(String newTableName) throws SQLException
     {
         boolean flag = false;

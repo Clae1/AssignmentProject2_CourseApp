@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.Data;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,6 +32,7 @@ public class MainMenuPanel extends JPanel
     public JButton RemovePaperButton = new JButton("Remove a chosen papers");
     public JTextArea MainMenuInfo = new JTextArea();
     private JLabel MTitle = new JLabel("Main Menu");
+    public JLabel Papers = new JLabel();
     
     public MainMenuPanel()
     {
@@ -55,8 +57,11 @@ public class MainMenuPanel extends JPanel
         scrollPane = new JScrollPane(MainMenuInfo);
         scrollPane.setPreferredSize(new Dimension(300, 400));
         
-        MTitle.setFont(new Font("Arial", Font.BOLD, 20));
+        MTitle.setFont(new Font("Arial", Font.BOLD, 15));
         MTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        Papers.setFont(new Font("Arial", Font.BOLD, 20));
+        
         // Panel to hold the Exit button and title
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.add(ExitButton, BorderLayout.WEST);
@@ -70,5 +75,6 @@ public class MainMenuPanel extends JPanel
         this.add(topPanel, BorderLayout.NORTH);
         this.add(contentPanel, BorderLayout.CENTER) ;      
         this.add(scrollPane, BorderLayout.EAST);
+        this.add(Papers, BorderLayout.SOUTH);
     }
 }

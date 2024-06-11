@@ -24,4 +24,7 @@ public class Data
     // account. 
     public int PaperCount = 0;
     public boolean MaxPaper = false;
+    
+    //To get the users papers 
+    public String UserPapers = "";
 }

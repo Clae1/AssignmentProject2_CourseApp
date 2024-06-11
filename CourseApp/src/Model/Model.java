@@ -33,6 +33,14 @@ public class Model extends Observable
         this.notifyObservers(this.data);
     }
     
+    public void checkPaper(String username) throws SQLException
+    {
+        this.username = username;
+        this.db.checkPaper(username);
+        this.setChanged(); 
+        this.notifyObservers(this.data);
+    }
+    
     public void AddPaper(String paper, String username) throws SQLException
     {
         this.data = this.db.AddPaper(paper, username);

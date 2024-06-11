@@ -45,9 +45,9 @@ public class Controller implements ActionListener
                 String username = this.view.loginPanel.unInput.getText(); 
                 String password = this.view.loginPanel.pwInput.getText(); 
                 {
-                    try 
-                    {
+                    try {
                         this.model.checkName(username, password); 
+                        this.model.checkPaper(username);
                     } 
                     catch (SQLException ex) {
                         System.out.println(ex);
@@ -99,6 +99,7 @@ public class Controller implements ActionListener
             case "REMOVE COURSE/COURSES":
             {
                 System.out.println("Remove Course button works");
+                
                 
             }
             break;
