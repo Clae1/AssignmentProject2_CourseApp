@@ -5,17 +5,25 @@
 package courseapp;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author claeo
  */
-public class View extends JFrame implements Observer
-{
-    //For user page
+public class View extends JFrame implements Observer {
+//For user page
     public LoginPanel loginPanel = new LoginPanel();
     
     //For MainPage
@@ -23,6 +31,9 @@ public class View extends JFrame implements Observer
     
     //For Course page
     public CoursePanel coursePanel = new CoursePanel();
+    
+    //For Remove page
+    public RemovePanel removePanel = new RemovePanel();
    
     //Constructor 
     public View()
@@ -56,41 +67,44 @@ public class View extends JFrame implements Observer
         this.repaint();
     }
     
+    public void RemoveMenu()
+    {
+        this.getContentPane().removeAll();
+        this.add(removePanel);
+        this.setVisible(true);
+        this.revalidate();
+        this.repaint();
+    }
+    
   
     public void addActionListener(ActionListener listener)
     {
         coursePanel.ExitButton.addActionListener(listener);
+        removePanel.ExitButton.addActionListener(listener);
         loginPanel.loginButton.addActionListener(listener);
         mainMenuPanel.RemovePaperButton.addActionListener(listener);
         mainMenuPanel.PaperButton.addActionListener(listener);
     }
-    
 
     @Override
-    public void update(Observable o, Object arg)
-    {
-        Data data = (Data) arg; 
-        if (!data.loginFlag)
-        {
+    public void update(Observable o, Object arg) {
+        Data data = (Data) arg;
+        if (!data.loginFlag) {
             loginPanel.unInput.setText("");
             loginPanel.pwInput.setText("");
             loginPanel.message.setText("Invalid username or password.");
         }
-        
-        if (data.loginFlag)
-        {
-           this.mainMenu();
-        }
-        
-        if (data.CourseFlag)
-        {
-            this.CourseMenu();
-        }
-        
-        if (!data.CourseFlag)
-        {
+
+        if (data.loginFlag) {
             this.mainMenu();
         }
+        // Only allows one menu on.
+        if (data.CourseFlag) {
+        this.CourseMenu();
+    } else if (data.removeFlag) {
+        this.RemoveMenu();
+    } else if (!data.CourseFlag && !data.removeFlag) {
+        this.mainMenu();
     }
 }
-
+}
