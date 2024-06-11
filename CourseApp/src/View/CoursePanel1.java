@@ -6,7 +6,11 @@ package View;
 
 
 import Model.CourseInfo;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -20,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -27,7 +32,7 @@ import javax.swing.JTextArea;
  */
 public class CoursePanel1 extends JPanel implements CourseInfo
 {
-    public JLabel Check = new JLabel("Page 1 works");
+    public JLabel cTitle = new JLabel("Computer Science and Information System Course Menu");
     public JButton AddButton = new JButton("ADD PAPER");
     public JButton ExitButton = new JButton("EXIT");
     public JComboBox CourseBox;
@@ -37,19 +42,18 @@ public class CoursePanel1 extends JPanel implements CourseInfo
 
     public CoursePanel1()
     {
-        this.setBackground(Color.GRAY);
-        this.setLayout(null);
-       
-        Check.setBounds(200, 200, 100, 50);
+        this.setBackground(Color.WHITE);
+        this.setLayout(new BorderLayout(10, 10));
+ 
         
-        AddButton.setBounds(250, 100, 225, 100);
+        AddButton.setPreferredSize(new Dimension(300, 150));
         
-        ExitButton.setBounds(0, 0, 100, 50);
+        ExitButton.setPreferredSize(new Dimension(100, 50));
         ExitButton.setBackground(Color.RED);
         
         String[] paper = coursePaperReader();
         PaperBox = new JComboBox(paper);
-        PaperBox.setBounds(200, 100, 225, 100);
+        PaperBox.setPreferredSize(new Dimension(200, 50));
         
         String computerInfo = courseInfoReader();
         textInfo.setText(computerInfo);
@@ -57,16 +61,25 @@ public class CoursePanel1 extends JPanel implements CourseInfo
         textInfo.setLineWrap(true);
         textInfo.setEditable(false);
         
+        cTitle.setFont(new Font("Arial", Font.BOLD, 20));
+        cTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        
         scrollPane = new JScrollPane(textInfo);
-        scrollPane.setBounds(500, 10, 280, 330);
+        scrollPane.setPreferredSize(new Dimension(300, 400));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
-        this.add(AddButton);
-        this.add(scrollPane);
-        this.add(Check);
-        this.add(PaperBox);
-        this.add(ExitButton);
+        JPanel inputPanel = new JPanel(new FlowLayout());
+        inputPanel.add(AddButton);
+        inputPanel.add(PaperBox);
+        
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.add(ExitButton, BorderLayout.WEST);
+        topPanel.add(cTitle, BorderLayout.CENTER);
+        
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(inputPanel, BorderLayout.CENTER);
+        this.add(scrollPane, BorderLayout.EAST);
     }
 
     @Override
