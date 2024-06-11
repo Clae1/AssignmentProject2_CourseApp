@@ -9,6 +9,8 @@ import Model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +33,8 @@ public class Controller implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         String command = e.getActionCommand(); 
+        Object source = e.getSource();
+        
         System.out.println("Action Command: " + command);
         
         switch (command){
@@ -70,6 +74,23 @@ public class Controller implements ActionListener
             case "comboBoxChanged":
             {
                 System.out.println("The JBOX button works");
+                if (source == this.view.coursePanel1.PaperBox)
+                {
+                    this.view.coursePanel1.PaperBox.getSelectedItem();
+                    break;
+                }
+                
+                if (source == this.view.coursePanel2.PaperBox)
+                {
+                    this.view.coursePanel2.PaperBox.getSelectedItem();
+                    break;
+                }
+                
+                if (source == this.view.coursePanel2.PaperBox)
+                {
+                    this.view.coursePanel1.PaperBox.getSelectedItem();
+                    break;
+                }
                 String course = (String)this.view.mainMenuPanel.CourseBox.getSelectedItem();
                 this.model.changeToCourse(course);
             }
@@ -85,6 +106,38 @@ public class Controller implements ActionListener
             case "ADD PAPER":
             {
                 System.out.println("ADD PAPER button works");
+                if (e.getSource() == this.view.coursePanel1.AddButton)
+                {
+                    String username = this.model.username;
+                    String paper = (String) this.view.coursePanel1.PaperBox.getSelectedItem();
+                    try {
+                        this.model.AddPaper(paper, username);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                if (e.getSource() == this.view.coursePanel2.AddButton)
+                {
+                    String username = this.model.username;
+                    String paper = (String) this.view.coursePanel2.PaperBox.getSelectedItem();
+                    try {
+                        this.model.AddPaper(paper, username);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                if (e.getSource() == this.view.coursePanel3.AddButton)
+                {
+                    String username = this.model.username;
+                    String paper = (String) this.view.coursePanel3.PaperBox.getSelectedItem();
+                    try {
+                        this.model.AddPaper(paper, username);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
             break;
         }

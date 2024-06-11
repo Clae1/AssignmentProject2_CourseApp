@@ -52,6 +52,7 @@ public class View extends JFrame implements Observer {
     
     public void CourseMenu1()
     {
+        coursePanel1.DupError.setText(""); 
         this.getContentPane().removeAll();
         this.add(coursePanel1);
         this.setVisible(true);
@@ -61,6 +62,7 @@ public class View extends JFrame implements Observer {
     
     public void CourseMenu2()
     {
+        coursePanel2.DupError.setText(""); 
         this.getContentPane().removeAll();
         this.add(coursePanel2);
         this.setVisible(true);
@@ -70,6 +72,7 @@ public class View extends JFrame implements Observer {
     
     public void CourseMenu3()
     {
+        coursePanel3.DupError.setText(""); 
         this.getContentPane().removeAll();
         this.add(coursePanel3);
         this.setVisible(true);
@@ -95,7 +98,12 @@ public class View extends JFrame implements Observer {
         coursePanel1.PaperBox.addActionListener(listener);
         
         coursePanel2.ExitButton.addActionListener(listener);
+        coursePanel2.AddButton.addActionListener(listener);
+        coursePanel2.PaperBox.addActionListener(listener);
+        
         coursePanel3.ExitButton.addActionListener(listener);
+        coursePanel3.AddButton.addActionListener(listener);
+        coursePanel3.PaperBox.addActionListener(listener);
         
         //For the remove page 
         removePanel.ExitButton.addActionListener(listener);
@@ -130,13 +138,21 @@ public class View extends JFrame implements Observer {
             loginPanel.message.setText("Invalid username or password.");
         }
 
-        if (data.loginFlag) {
+        if (data.loginFlag) 
+        {
             this.mainMenu();
         }
                 
         // Will change the frame to the remove paper 
         if (data.removeFlag){
             this.RemoveMenu();
-        } 
+        }
+        
+        if (data.duplicateFlag)
+        {
+            coursePanel1.DupError.setText("Cannot choose same paper!!!");
+            coursePanel2.DupError.setText("Cannot choose same paper!!!");
+            coursePanel3.DupError.setText("Cannot choose same paper!!!");
+        }
     }
 }

@@ -88,6 +88,8 @@ public class UserDatabase
     public Data AddPaper(String paper, String username) throws SQLException
     {
         Data data = new Data(); // Initialize an instance of Data
+        data.duplicateFlag = false;
+        data.loginFlag = true;
         String[] tablePaper;
         try
         {
@@ -109,7 +111,9 @@ public class UserDatabase
                 {
                     if (paper.equalsIgnoreCase(tablePaper1)) 
                     {
+                        System.out.println("Duplicate found");
                         data.duplicateFlag = true;
+                        data.loginFlag = false;
                         rs.close(); 
                         statement.close(); 
                         return data;
@@ -117,7 +121,9 @@ public class UserDatabase
                 }
                 if (data.PaperCount > 6)
                 {
+                    System.out.println("Max papers reached");
                     data.MaxPaper = true;
+                    data.loginFlag = false;
                     rs.close(); 
                     statement.close(); 
                     return data;
@@ -132,7 +138,6 @@ public class UserDatabase
                String updateQuery = "UPDATE StudentTable SET paper = '" + updatedPapers + "' WHERE studentid = '" + username + "'";
                statement.executeUpdate(updateQuery);
                //end of code
-
             }
             rs.close();
             statement.close(); 
@@ -143,7 +148,7 @@ public class UserDatabase
         }
         return data;     
     }
-
+    
     private boolean checkTableExisitng(String newTableName) throws SQLException
     {
         boolean flag = false;

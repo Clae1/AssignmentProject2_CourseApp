@@ -33,6 +33,7 @@ import javax.swing.SwingConstants;
 public class CoursePanel1 extends JPanel implements CourseInfo
 {
     public JLabel cTitle = new JLabel("Computer Science and Information System Course Menu");
+    public JLabel DupError = new JLabel();
     public JButton AddButton = new JButton("ADD PAPER");
     public JButton ExitButton = new JButton("EXIT");
     public JComboBox CourseBox;
@@ -44,7 +45,6 @@ public class CoursePanel1 extends JPanel implements CourseInfo
     {
         this.setBackground(Color.WHITE);
         this.setLayout(new BorderLayout(10, 10));
- 
         
         AddButton.setPreferredSize(new Dimension(300, 150));
         
@@ -60,6 +60,10 @@ public class CoursePanel1 extends JPanel implements CourseInfo
         textInfo.setMargin(new Insets(10,10,10,10));
         textInfo.setLineWrap(true);
         textInfo.setEditable(false);
+        
+        DupError.setHorizontalAlignment(SwingConstants.CENTER);
+        DupError.setForeground(Color.red);
+        DupError.setFont(new Font("Arial", Font.BOLD, 20));
         
         cTitle.setFont(new Font("Arial", Font.BOLD, 20));
         cTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -80,6 +84,7 @@ public class CoursePanel1 extends JPanel implements CourseInfo
         this.add(topPanel, BorderLayout.NORTH);
         this.add(inputPanel, BorderLayout.CENTER);
         this.add(scrollPane, BorderLayout.EAST);
+        this.add(DupError, BorderLayout.SOUTH);
     }
 
     @Override
