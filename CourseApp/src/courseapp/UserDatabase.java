@@ -23,12 +23,6 @@ public class UserDatabase
     String dbusername = "pdc";
     String dbpassword = "pdc";
     
-    /**
-     * Step 3: Create the method for initializing the connection between the 
-     * program and the database.Go to Controller.java for Step 4 
-     *
-     * @throws java.sql.SQLException
-     */
     public void dbsetup() throws SQLException
     {
         try

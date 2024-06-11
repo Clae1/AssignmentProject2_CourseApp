@@ -36,8 +36,8 @@ public class Controller implements ActionListener
             {
                 // Login button 
                 System.out.println("Log in button pressed");
-                String username = this.view.unInput.getText(); 
-                String password = this.view.pwInput.getText(); 
+                String username = this.view.loginPanel.unInput.getText(); 
+                String password = this.view.loginPanel.pwInput.getText(); 
                 {
                     try 
                     {
