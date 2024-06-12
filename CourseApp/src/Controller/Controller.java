@@ -102,6 +102,7 @@ public class Controller implements ActionListener
             }
             break;
             
+            //The remove button
             case "REMOVE COURSE/COURSES":
             {
                 System.out.println("Remove Course button works");
@@ -140,6 +141,7 @@ public class Controller implements ActionListener
                     }
                 }
                 
+                // To add papers to the database 
                 if (e.getSource() == this.view.coursePanel3.AddButton)
                 {
                     String username = this.model.username;

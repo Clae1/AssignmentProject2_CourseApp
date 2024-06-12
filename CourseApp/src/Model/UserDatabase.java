@@ -176,7 +176,7 @@ public class UserDatabase
         return userPaper;
     }
     
-    
+    //The method that will delete or remove the paper from the database
     public void RemovePaper(String paper, String username) throws SQLException
     {
         Data data = new Data(); // Initialize an instance of Data

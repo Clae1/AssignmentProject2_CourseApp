@@ -48,7 +48,8 @@ public class Model extends Observable
         this.notifyObservers(this.data);
     }
     
-     public void RemovePaper(String paper, String username) throws SQLException
+    //Will remove the paper that the user chooses to remove 
+    public void RemovePaper(String paper, String username) throws SQLException
     {
         this.db.RemovePaper(paper, username);
         this.setChanged(); 
